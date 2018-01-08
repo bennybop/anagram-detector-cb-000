@@ -1,12 +1,24 @@
 # Your code goes here!
+require 'pry'
 class Anagram
-attr_accessor :name
-def initialize(word)
-  @name = word 
-end
+  attr_accessor :name
 
-def match(array)
-  array.select {|x| x.split ("").sort == @name.split("").sort}
-end
+  def initialize(name)
+    @name = name
+  end
 
-end
+  def match(arr)
+    query = @name.downcase.split("").sort.join
+    data = []
+    matches = []
+    anagrams = []
+    arr.each { |c| data << c.downcase.split("").sort.join }
+    data.each_index.select do |i|
+      if data[i] == query
+        matches << i
+      end
+    end
+    matches.each { |i| anagrams << arr[i] }
+    anagrams
+  end
+end 
