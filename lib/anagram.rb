@@ -12,7 +12,7 @@ class Anagram
     data = []
     matches = []
     anagrams = []
-    arr.each { |c| data << c.downcase.split("").sort.join }
+    arr.each { |abc| data << abc.downcase.split("").sort.join }
     data.each_index.select do |i|
       if data[i] == query
         matches << i
@@ -21,4 +21,4 @@ class Anagram
     matches.each { |i| anagrams << arr[i] }
     anagrams
   end
-end 
+end
